@@ -10,7 +10,7 @@ import { RestService } from '../rest.service';
 })
 export class LoginComponent implements OnInit {
 
-  loginForm!: FormGroup;
+  loginForm: FormGroup;
   errorMessage: any;
   showMsgError: boolean = false;
   showMsgRegistration: boolean = false;

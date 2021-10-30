@@ -8,6 +8,7 @@ const endpoint = 'http://localhost:3000';
 @Injectable({
   providedIn: 'root'
 })
+
 export class RestService {
 
   constructor(private http: HttpClient) { }
@@ -35,3 +36,5 @@ export class RestService {
     }
   }
 }
+
+
