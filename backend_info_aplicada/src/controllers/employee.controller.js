@@ -19,3 +19,12 @@ export const addEmployee = async  (req, res) => {
   "','" + sexo+"','"+ departamento+"','"+ loginName+"','" +contrasena+"'");
     res.json('insercion exitosa')
 }
+
+export const deleteEmployee = async (req, res) => {
+
+    const {id} = req.params
+    const pool = await getconnection();
+    const result = await pool.request().query("exec [dbo].[sp_deleteEmployee]'"+id+"'")
+    res.json("delete")
+
+};
