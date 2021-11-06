@@ -1,0 +1,38 @@
+<app-nav></app-nav>
+<div class="container ">
+    <div class="card">
+        <div class="card-header">
+            <a name="" id="" class="btn btn-dark bR" href="/add" role="button">Registrar</a>
+
+            <h3>Lista Empleados</h3>
+        </div>
+
+        <div class="card-body">
+            <table class="table table-light table-striped table-hove">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellidos</th>
+                        <th>Fecha Nacimiento</th>
+                        <th>Departamento</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let e of employees">
+                        <td>{{e.nombre}}</td>
+                        <td>{{e.apellidos}}</td>
+                        <td>{{e.fechaNacimiento}}</td>
+                        <td>{{e.idDepartamento}}</td>
+                        <td>
+                            <!-- <button (click)="Editar(e.idFuncionario)" class="btn bbtn-warning">Editar</button> -->
+                            <button (click)="deleteEmploye(e.idFuncionario)" class="btn btn-danger">Eliminar</button>
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

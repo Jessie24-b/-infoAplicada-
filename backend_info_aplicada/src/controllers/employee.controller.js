@@ -12,7 +12,7 @@ export const addEmployee = async  (req, res) => {
   
    
    
-    const {nombre, apellidos, fechaNacimiento, sexo, departamento, loginName, contrasena} = req.body; 
+    const {nombre, apellidos, fechaNacimiento, sexo, departamento, loginName, contrasena} = req.body;
     const pool = await getconnection();
 
    await pool.request().query( "exec [dbo].[sp_AddEmployee] '" + nombre+ "','" + apellidos+"','"+fechaNacimiento +
@@ -21,10 +21,11 @@ export const addEmployee = async  (req, res) => {
 }
 
 export const deleteEmployee = async (req, res) => {
-
-    const {id} = req.params
+     console.log("HOLA");
+    const {idFuncionario} = req.params
+    console.log(idFuncionario);
     const pool = await getconnection();
-    const result = await pool.request().query("exec [dbo].[sp_deleteEmployee]'"+id+"'")
+    const result = await pool.request().query("exec [dbo].[sp_deleteEmployee]'"+idFuncionario+"'")
     res.json("delete")
 
 };

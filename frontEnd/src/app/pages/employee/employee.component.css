@@ -1,0 +1,12 @@
+h3{
+    float: right;
+    margin-right: 500px;
+}
+.bR{
+    margin:5px;
+}
+
+.bR:hover{
+    color:black;
+    background-color: darkgray;
+}

@@ -9,11 +9,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 //Componentes
-import { LoginComponent } from './login/login.component';
-import { MainComponent } from './main/main.component';
+import { LoginComponent } from './shared/components/login/login.component';
+import { MainComponent } from './shared/components/main/main.component';
 
 //Angular Material
 import {MatCardModule} from '@angular/material/card';
+import { EmployeeComponent } from './pages/employee/employee.component';
+import { NavComponent } from './shared/components/nav/nav.component';
+import { AddEmployeComponent } from './shared/components/add-employe/add-employe.component';
+
 
 
 const appRoutes: Routes = [
@@ -39,7 +43,10 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     LoginComponent,
-    MainComponent
+    MainComponent,
+    EmployeeComponent,
+    NavComponent,
+    AddEmployeComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
