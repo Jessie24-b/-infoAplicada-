@@ -1,0 +1,13 @@
+
+GET http://localhost:4000/getEmployee/
+
+###
+POST http://localhost:4000/addEmployee/
+
+Content-Type: application/json
+
+{
+    numero: 2,
+    nombre: "jessie",
+    apellido: "brenes"
+}
