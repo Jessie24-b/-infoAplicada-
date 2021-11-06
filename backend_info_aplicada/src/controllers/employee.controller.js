@@ -11,10 +11,11 @@ export const getEmployees = async (req, res) => {
 export const addEmployee = async  (req, res) => {
   
    
-   // const { dato,dato,dato,dato,dato,dato,dato,dato,dato } = req.params
-    const { numero, nombre, apellido} = req.body; 
+   
+    const {nombre, apellidos, fechaNacimiento, sexo, departamento, loginName, contrasena} = req.body; 
     const pool = await getconnection();
 
-   await pool.request().query( "exec [dbo].[getPrueba] '" + numero+ "','" + nombre+"','"+ apellido+"'");
-    res.json('no esta insetando')
+   await pool.request().query( "exec [dbo].[sp_AddEmployee] '" + nombre+ "','" + apellidos+"','"+fechaNacimiento +
+  "','" + sexo+"','"+ departamento+"','"+ loginName+"','" +contrasena+"'");
+    res.json('insercion exitosa')
 }
