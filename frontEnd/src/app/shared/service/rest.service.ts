@@ -15,17 +15,16 @@ export class RestService {
   constructor(private http: HttpClient) { }
   
   getEmployees(){
-    return this.http.get(environment.url+'/getEmployee/')//direcccion de node que saca empleados falta
+    return this.http.get(environment.url+'/getEmployee/')
   }
 
   deleteEmployeByID(id:number){
 
-    return this.http.delete(environment.url+'/deleteEmployee/'+id) //direccion para eliminar falta
+    return this.http.delete(environment.url+'/deleteEmployee/'+id) 
   }
 
   createEmploye(body:any){
     return this.http.post(environment.url+'/addEmployee/', body).toPromise().then((data:any) => {
-      console.log(data)
     })
   }
 

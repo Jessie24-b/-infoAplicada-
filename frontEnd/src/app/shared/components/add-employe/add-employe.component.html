@@ -7,68 +7,147 @@
       </div>
       <div class="card-body">
 
-        <form (ngSubmit)="createEmployee(form)" #form="ngForm" class="formulario">
-          <div class="mb-3">
-            <label class="form-label"> Nombre: </label>
-            <input type="text" class="form-control" name="nombre" ngModel placeholder="Nombre">
+        <form [formGroup]="newEmployee" (ngSubmit)="createEmployee()" class="formulario" #formDir="ngForm">
+
+          <div>
+            <div class="form-group mb-3">
+              <label class="form-label"> Nombre: </label>
+              <input type="text" class="form-control" formControlName="nombre" autocomplete="off" placeholder="Nombre"
+                maxlength="20">
+            </div>
+            <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched || formDir.submitted)">
+              <div>
+                <span class="text-danger" *ngIf="nombre.errors.required">
+                  El nombre es requerido.
+                </span>
+              </div>
+              <div>
+                <span class="text-danger" *ngIf="nombre.errors.pattern">
+                  Solo se permiten letras.
+                </span>
+              </div>
+            </div>
+
           </div>
 
-          <div class="mb-3">
-            <label class="form-label"> Apellidos: </label>
-            <input type="text" class="form-control" name="apellidos" ngModel placeholder="Apellidos">
+          <div>
+            <div class="mb-3">
+              <label class="form-label"> Apellidos: </label>
+              <input type="text" class="form-control" formControlName="apellidos" autocomplete="off"
+                placeholder="Apellidos" maxlength="60">
+            </div>
+
+            <div *ngIf="apellidos.invalid && (apellidos.dirty || apellidos.touched || formDir.submitted)">
+              <div>
+                <span class="text-danger" *ngIf="apellidos.errors.required">
+                  Los apellidos son requeridos.
+                </span>
+              </div>
+              <div>
+                <span class="text-danger" *ngIf="apellidos.errors.pattern">
+                  Solo se permiten letras.
+                </span>
+              </div>
+            </div>
           </div>
 
-          <div class="mb-3">
-            <label class="form-label"> Fecha de nacimiento: </label>
-            <input type="date" class="form-control" name="fechaNacimiento" ngModel placeholder="Fecha nacimiento">
+          <div>
+            <div class="mb-3">
+              <label class="form-label"> Fecha de nacimiento: </label>
+              <input type="date" class="form-control" formControlName="fechaNacimiento" placeholder="Fecha nacimiento">
+            </div>
+            <span class="text-danger" *ngIf="newEmployee.hasError('required', 'fechaNacimiento') && formDir.submitted">
+              La fecha de nacimiento es requerida.
+            </span>
           </div>
 
           <div>
             <label class="form-label"> Sexo: </label>
             <div class="form-check">
               <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="sexo" ngModel value="true" checked>
+                <input type="radio" class="form-check-input" formControlName="sexo" value="true" checked>
                 Femenino
               </label>
             </div>
             <div class="form-check">
               <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="sexo" ngModel value="false">
+                <input type="radio" class="form-check-input" formControlName="sexo" value="false">
                 Masculino
               </label>
+            </div>
+            <span class="text-danger" *ngIf="newEmployee.hasError('required', 'sexo') && formDir.submitted">
+              El sexo es requerido.
+            </span>
+          </div>
+
+          <div>
+            <div>
+              <label class="form-label"> Seleccione un departamento: </label>
+              <select class="form-select form-control" formControlName="departamento">
+                <option value="1" selected>Informática</option>
+                <option value="2">Contaduria</option>
+                <option value="3">Administración</option>
+              </select>
+            </div>
+            <span class="text-danger" *ngIf="newEmployee.hasError('required', 'departamento') && formDir.submitted">
+              El departamento es requerido.
+            </span>
+          </div>
+
+          <div>
+            <div class="mb-3">
+              <label class="form-label"> Login name: </label>
+              <input type="email" class="form-control" formControlName="loginName" autocomplete="off"
+                placeholder="Correo">
+            </div>
+
+            <div *ngIf="loginName.invalid && (loginName.dirty || loginName.touched || formDir.submitted)">
+              <span class="text-danger" *ngIf="loginName.errors.required">
+                El login name es requerido.
+              </span>
+              <span class="text-danger" *ngIf="loginName.errors.email">
+                @ es requerido.
+              </span>
             </div>
           </div>
 
           <div>
-            <label class="form-label"> Seleccione un departamento: </label>
-            <select class="form-select form-control" ngModel name="departamento">
-              <option selected>Departamento</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-            </select>
+            <div class="mb-3">
+              <label for="password" class="form-label">Contraseña</label>
+              <input type="password" class="form-control" formControlName="contrasena" placeholder="contraseña">
+            </div>
+            <div *ngIf="contrasena.invalid && (contrasena.dirty || contrasena.touched || formDir.submitted)">
+              <span class="text-danger" *ngIf="contrasena.errors.required">
+                La contraseña es requerida.
+              </span>
+              <span class="text-danger" *ngIf="contrasena.errors.pattern">
+                Solo se permiten letras y números, con un rango de 5 a 15 dígitos.
+              </span>
+            </div>
           </div>
 
-          <div class="mb-3">
-            <label class="form-label"> Login name: </label>
-            <input type="email" class="form-control" name="loginName" ngModel placeholder="Login name">
-          </div>
-
-          <div class="mb-3">
-            <label for="password" class="form-label">Contraseña</label>
-            <input type="password" class="form-control" name="contrasena" ngModel placeholder="contraseña">
-          </div>
-
-          <div class="mb-3">
-            <label for="password" class="form-label">Confirmar contraseña</label>
-            <input type="password" class="form-control" name="contrasena2" ngModel placeholder="Confirmar contraseña">
+          <div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Confirmar contraseña</label>
+              <input type="password" class="form-control" formControlName="contrasena2"
+                placeholder="Confirmar contraseña">
+            </div>
+            <div *ngIf="contrasena2.invalid && (contrasena2.dirty || contrasena2.touched || formDir.submitted)">
+              <span class="text-danger" *ngIf="contrasena2.errors.required">
+                La confirmacion de la contraseña es requerida.
+              </span>
+              <span class="text-danger" *ngIf="contrasena2.errors.pattern">
+                Solo se permiten letras y números, con un rango de 5 a 15 dígitos.
+              </span>
+            </div>
           </div>
 
           <div class="mb-3 row">
             <div class="offset-sm-2 col-sm-10">
-              <button type="submit" class="btn btn-primary">Registrar</button>
+              <button type="submit" class="btn btn-primary">Guardar</button>
             </div>
           </div>
+
         </form>
       </div>
     </div>

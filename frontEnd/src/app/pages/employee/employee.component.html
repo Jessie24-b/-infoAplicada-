@@ -2,7 +2,8 @@
 <div class="container ">
     <div class="card">
         <div class="card-header">
-            <a name="" id="" class="btn btn-dark bR" href="/add" role="button">Registrar</a>
+            <a name="" id="" class="btn btn-dark bR" href="/add" role="button">
+                <fa-icon [icon]="faUserPlus"></fa-icon></a>
 
             <h3>Lista Empleados</h3>
         </div>
@@ -23,11 +24,14 @@
                     <tr *ngFor="let e of employees">
                         <td>{{e.nombre}}</td>
                         <td>{{e.apellidos}}</td>
-                        <td>{{e.fechaNacimiento}}</td>
-                        <td>{{e.idDepartamento}}</td>
+                        <td>{{e.fecha}}</td>
+                        <td>{{e.descripcion}}</td>
                         <td>
-                            <!-- <button (click)="Editar(e.idFuncionario)" class="btn bbtn-warning">Editar</button> -->
-                            <button (click)="deleteEmploye(e.idFuncionario)" class="btn btn-danger">Eliminar</button>
+                            <button (click)="editEmployee()" class="btn btn-warning">
+                                <fa-icon [icon]="faUserEdit"></fa-icon></button> 
+                            <button (click)="deleteEmploye(e.idFuncionario)" class="btn btn-danger">
+                                <fa-icon [icon]="faTrashAlt"></fa-icon></button>
+                            <button  class="btn btn-primary"><fa-icon [icon]="faAddressCard"></fa-icon></button>
                         </td>
 
                     </tr>

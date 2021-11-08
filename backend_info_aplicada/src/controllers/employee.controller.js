@@ -10,8 +10,6 @@ export const getEmployees = async (req, res) => {
 
 export const addEmployee = async  (req, res) => {
   
-   
-   
     const {nombre, apellidos, fechaNacimiento, sexo, departamento, loginName, contrasena} = req.body;
     const pool = await getconnection();
 
@@ -21,11 +19,10 @@ export const addEmployee = async  (req, res) => {
 }
 
 export const deleteEmployee = async (req, res) => {
-     console.log("HOLA");
-    const {idFuncionario} = req.params
-    console.log(idFuncionario);
+    
+    const {id} = req.params
     const pool = await getconnection();
-    const result = await pool.request().query("exec [dbo].[sp_deleteEmployee]'"+idFuncionario+"'")
+    const result = await pool.request().query("exec [dbo].[sp_deleteEmployee]'"+id+"'")
     res.json("delete")
 
 };

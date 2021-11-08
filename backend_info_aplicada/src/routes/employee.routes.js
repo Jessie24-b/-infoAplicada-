@@ -6,7 +6,7 @@ router.get('/getEmployee',getEmployees)
 
 router.post('/addEmployee', addEmployee)
 
-router.get('/deleteEmployee/:id', deleteEmployee)
+router.delete('/deleteEmployee/:id', deleteEmployee)
 
 router.delete('/employee',)
 
