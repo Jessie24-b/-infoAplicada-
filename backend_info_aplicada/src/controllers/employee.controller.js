@@ -1,28 +1,72 @@
 
+import { pool } from 'mssql';
 import {getconnection, sql} from '../database/connection'
 
 export const getEmployees = async (req, res) => {
-    const pool = await getconnection();
-    const result = await pool.request().query('exec [dbo].[getEmployees]')
-    res.json(result.recordset)
+    try {
+        const pool = await getconnection();
+        const result = await pool.request().query('exec [dbo].[getEmployees]')
+        res.json(result.recordset)
+        pool.close;
+    } catch (error) {
+        res.status(500);
+        res.send(error.message);
+       
+    }
 
 };
 
 export const addEmployee = async  (req, res) => {
   
     const {nombre, apellidos, fechaNacimiento, sexo, departamento, loginName, contrasena} = req.body;
-    const pool = await getconnection();
+    try {
+        const pool = await getconnection();
 
-   await pool.request().query( "exec [dbo].[sp_AddEmployee] '" + nombre+ "','" + apellidos+"','"+fechaNacimiento +
-  "','" + sexo+"','"+ departamento+"','"+ loginName+"','" +contrasena+"'");
-    res.json('insercion exitosa')
-}
+        await pool.request().query( "exec [dbo].[sp_AddEmployee] '" + nombre+ "','" + apellidos+"','"+fechaNacimiento +
+       "','" + sexo+"','"+ departamento+"','"+ loginName+"','" +contrasena+"'");
+         res.sendStatus(204);
+    } catch (error) {
+        res.status(500);
+        res.send(error.message);
+        
+    }
+ 
+};
 
 export const deleteEmployee = async (req, res) => {
     
-    const {id} = req.params
+    const {id} = req.params;
     const pool = await getconnection();
-    const result = await pool.request().query("exec [dbo].[sp_deleteEmployee]'"+id+"'")
-    res.json("delete")
+    const result = await pool.request().query("exec [dbo].[sp_deleteEmployee]'"+id+"'");
+    res.sendStatus(204);
 
 };
+
+export const getEmployeeById = async (req, res) => {
+    
+    const {id} = req.params;
+    const pool = await getconnection();
+    const result = await pool.request().query("exec [dbo].[sp_getEmployee]'"+id+"'");
+    res.send(result.recordset[0]);
+
+};
+
+
+export const updateEmployee = async  (req, res) => {
+    console.log(req.body);
+    const {id, nombre, apellidos, fechaNacimiento, sexo, departamento, loginName, contrasena} = req.body;
+    
+    try {
+        const pool = await getconnection();
+
+        await pool.request().query( "exec [dbo].[sp_updateEmployee] '"+ id +"','"+ nombre+ "','" + apellidos+"','"+fechaNacimiento +
+       "','" + sexo+"','"+ departamento+"','"+ loginName+"','" +contrasena+"'");
+         res.sendStatus(204);
+    } catch (error) {
+        res.status(500);
+        res.send(error.message);
+        
+    }
+ 
+};
+
