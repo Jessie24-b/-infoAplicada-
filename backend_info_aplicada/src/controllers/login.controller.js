@@ -13,6 +13,7 @@ export const checkLogin = async (req, res) => {
             console.log("falso dioo")
             res.send(null);
         }else{
+            console.log(result.recordset[0])
             res.send(result.recordset[0]);
         }
        

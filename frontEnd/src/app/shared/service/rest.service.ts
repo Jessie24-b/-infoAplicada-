@@ -46,7 +46,8 @@ export class RestService {
   }
 
   login(correo: string, contrasenna: string): Observable<any> {
-    return this.http.get(environment.url + '/login/' + correo + '/' + contrasenna).pipe(
+    console.log(correo+"--"+contrasenna);
+    return this.http.get(environment.url + '/checkLogin/' + correo + '/' + contrasenna).pipe(
       map(this.extractData),
       catchError(this.handleError<any>('login'))
     );
