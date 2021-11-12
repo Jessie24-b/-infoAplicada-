@@ -41,7 +41,8 @@ export class AddEmployeComponent implements OnInit {
 
   newEmployee: FormGroup;
 
-  constructor(private restService: RestService, public fb: FormBuilder, private route: ActivatedRoute, private router: Router) {
+  constructor(private restService: RestService, public fb: FormBuilder,
+     private route: ActivatedRoute, private router: Router) {
       this.newEmployee= this.createFormGroup();
   }
 
@@ -75,10 +76,11 @@ export class AddEmployeComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500
         })
-        this.router.navigate(['/employee']);
+        window.location.href="/employee"
       }
     } 
   }
+
 
   get nombre(){ return this.newEmployee.get('nombre');}
   get apellidos(){ return this.newEmployee.get('apellidos');}

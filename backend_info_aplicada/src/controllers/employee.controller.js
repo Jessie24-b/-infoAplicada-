@@ -55,9 +55,8 @@ export const getEmployeeById = async (req, res) => {
 
 
 export const updateEmployee = async  (req, res) => {
-    console.log(req.body);
     const {id, nombre, apellidos, fechaNacimiento, sexo, departamento, loginName, contrasena} = req.body;
-    
+    console.log(req.body);
     try {
         const pool = await getconnection();
 
@@ -67,6 +66,7 @@ export const updateEmployee = async  (req, res) => {
     } catch (error) {
         console.log("error de update");
         res.status(500);
+
         res.send(error.message);
         
     }

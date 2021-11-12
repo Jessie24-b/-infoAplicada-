@@ -15,7 +15,7 @@ export class RestService {
   constructor(private http: HttpClient) { }
   
   getEmployees(){
-    return this.http.get(environment.url+'/getEmployee/')
+    return this.http.get(environment.url+'/getEmployees/')
   }
 
   deleteEmployeByID(id:number){
@@ -25,6 +25,17 @@ export class RestService {
 
   createEmploye(body:any){
     return this.http.post(environment.url+'/addEmployee/', body).toPromise().then((data:any) => {
+    })
+  }
+
+  getEmployee(id:number){
+    console.log(id)
+     return this.http.get(environment.url+'/getEmployeeById/'+id) //falta direccion
+  }
+
+  updateEmployee(body:any){
+    console.log("Holi")
+    return this.http.put(environment.url+'/updateEmployee/', body).toPromise().then((data:any) => { //falta direccion
     })
   }
 

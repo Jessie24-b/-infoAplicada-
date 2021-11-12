@@ -18,10 +18,12 @@ import { faUserPlus } from '@fortawesome/free-solid-svg-icons';
 export class EmployeeComponent implements OnInit {
 
   employees:any;
+  employee:any;
   faAddressCard = faAddressCard;
   faTrashAlt = faTrashAlt;
   faUserEdit = faUserEdit;
   faUserPlus = faUserPlus;
+
 
   constructor(private restService: RestService, 
     private router: Router, public dialog:MatDialog) { }
@@ -66,14 +68,21 @@ export class EmployeeComponent implements OnInit {
 
   }
 
-  editEmployee(){
-    this.openEdit();
+  editEmployee(id:number){
+    
+    // this.router.navigate(["edit",id]); 
+   //.fillFormEdit(id);
+     this.openEdit(id);
+    
   }
 
-  openEdit():void{
+  openEdit(id:number):void{
     const dialogRef = this.dialog.open(EditEmployeeComponent,{
-      width:'350px',
-      data:'Editar empleado'
+      height:'540px',
+      width:'900px',
+      data:{
+        idFuncionario:id
+      }
     });
 
     dialogRef.afterClosed().subscribe(result =>{

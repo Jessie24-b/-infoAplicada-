@@ -39,23 +39,20 @@ export class LoginComponent implements OnInit {
     
   login() {
     
-    if (!this.loginForm.valid) {
-      return;
-    }
-    
-    this.rest.login(this.loginForm.value.email, this.loginForm.value.password).subscribe((result) => { 
-      if(result == 'Si existe'){
-        this.router.navigate(['/main']);
-      } else {
+    if (this.loginForm.valid) {
+      this.rest.login(this.loginForm.value.email, this.loginForm.value.password).subscribe((result) => { 
+        if(result != null){
+          this.router.navigate(['/main']);
+        } else {
+          this.showMsgError= true;
+          this.showMsgRegistration= false;
+        }
+        
+      }, (err) => {
         this.showMsgError= true;
         this.showMsgRegistration= false;
-      }
-      
-    }, (err) => {
-      this.showMsgError= true;
-      this.showMsgRegistration= false;
-    });
-    
+      });
+    } 
   }
 
 }

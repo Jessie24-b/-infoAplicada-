@@ -26,8 +26,8 @@
                         <td>{{e.apellidos}}</td>
                         <td>{{e.fecha}}</td>
                         <td>{{e.descripcion}}</td>
-                        <td>
-                            <button (click)="editEmployee()" class="btn btn-warning">
+                        <td class="btns">
+                            <button (click)="editEmployee(e.idFuncionario)" class="btn btn-warning">
                                 <fa-icon [icon]="faUserEdit"></fa-icon></button> 
                             <button (click)="deleteEmploye(e.idFuncionario)" class="btn btn-danger">
                                 <fa-icon [icon]="faTrashAlt"></fa-icon></button>

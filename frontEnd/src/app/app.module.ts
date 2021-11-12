@@ -23,6 +23,7 @@ import { NavComponent } from './shared/components/nav/nav.component';
 import { AddEmployeComponent } from './shared/components/add-employe/add-employe.component';
 import { EditEmployeeComponent } from './shared/components/edit-employee/edit-employee.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SolicitudComponent } from './shared/components/solicitud/solicitud.component';
 
 
 
@@ -53,7 +54,8 @@ const appRoutes: Routes = [
     EmployeeComponent,
     NavComponent,
     AddEmployeComponent,
-    EditEmployeeComponent
+    EditEmployeeComponent,
+    SolicitudComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
