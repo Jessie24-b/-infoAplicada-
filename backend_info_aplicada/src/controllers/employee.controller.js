@@ -16,6 +16,21 @@ export const getEmployees = async (req, res) => {
 
 };
 
+export const getDepartaments = async (req, res) => {
+    
+    try {
+        const pool = await getconnection();
+        const result = await pool.request().query('exec [dbo].[sp_getDepartaments]')
+        res.json(result.recordset)
+        pool.close();
+    } catch (error) {
+        res.status(500);
+        res.send(error.message);
+       
+    }
+
+};
+
 export const addEmployee = async  (req, res) => {
     console.log("entro");
     const {nombre, apellidos, fechaNacimiento, sexo, departamento, loginName, contrasena} = req.body;

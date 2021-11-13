@@ -1,16 +1,16 @@
 import { Router } from "express";
-import { addRequest, getRequest } from '../controllers/request.controller';
+import { addRequest, deleteRequest, getRequest, getRequestById, updateRequest } from '../controllers/request.controller';
 
 const router = Router();
 
 router.get('/get',getRequest)
 
 router.post('/add', addRequest)
-/*
-router.delete('/delete/:id', deleteEmployee)
 
-router.get('/getById/:id', getEmployeeById)
+router.delete('/delete/:id', deleteRequest)
 
-router.put('/update', updateEmployee)
-*/
+router.get('/getById/:id', getRequestById)
+
+router.put('/update', updateRequest)
+
 module.exports = router ;

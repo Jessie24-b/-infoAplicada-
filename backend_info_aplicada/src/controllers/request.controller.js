@@ -58,7 +58,7 @@ export const getRequestById = async (req, res) => {
     const {id} = req.params;
     try {
         const pool = await getconnection();
-        const result = await pool.request().query("exec [dbo].[sp_getRequest]'"+id+"'");
+        const result = await pool.request().query("exec [dbo].[sp_getRequestById]'"+id+"'");
         res.send(result.recordset[0]);
         pool.close();
     } catch (error) {
@@ -70,13 +70,13 @@ export const getRequestById = async (req, res) => {
 
 
 export const updateRequest = async  (req, res) => {
-    const {id, nombre, apellidos, fechaNacimiento, sexo, departamento, loginName, contrasena} = req.body;
+    const {idSolicitud, usuarioResponsable, usuarioFinal, fechaInicio, fechaFin, acta} = req.body;
     console.log(req.body);
     try {
         const pool = await getconnection();
 
-        await pool.request().query( "exec [dbo].[sp_updateRequest] '"+ id +"','"+ nombre+ "','" + apellidos+"','"+fechaNacimiento +
-       "','" + sexo+"','"+ departamento+"','"+ loginName+"','" +contrasena+"'");
+        await pool.request().query( "exec [dbo].[sp_updateRequest] " + idSolicitud + "," +
+         usuarioResponsable+","+usuarioFinal +",'" + fechaInicio+"','"+ fechaFin+"','"+ acta+"'");
          res.sendStatus(204);
          pool.close();
     } catch (error) {
