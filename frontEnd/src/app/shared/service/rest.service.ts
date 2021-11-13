@@ -15,27 +15,27 @@ export class RestService {
   constructor(private http: HttpClient) { }
   
   getEmployees(){
-    return this.http.get(environment.url+'/getEmployees/')
+    return this.http.get(environment.url+'/employees/get/')
   }
 
   deleteEmployeByID(id:number){
 
-    return this.http.delete(environment.url+'/deleteEmployee/'+id) 
+    return this.http.delete(environment.url+'/employees/delete'+id) 
   }
 
   createEmploye(body:any){
-    return this.http.post(environment.url+'/addEmployee/', body).toPromise().then((data:any) => {
+    return this.http.post(environment.url+'/employees/add', body).toPromise().then((data:any) => {
     })
   }
 
   getEmployee(id:number){
     console.log(id)
-     return this.http.get(environment.url+'/getEmployeeById/'+id) //falta direccion
+     return this.http.get(environment.url+'/employees/getById/'+id) //falta direccion
   }
 
   updateEmployee(body:any){
     console.log("Holi")
-    return this.http.put(environment.url+'/updateEmployee/', body).toPromise().then((data:any) => { //falta direccion
+    return this.http.put(environment.url+'/employees/update', body).toPromise().then((data:any) => { //falta direccion
     })
   }
 
@@ -47,7 +47,7 @@ export class RestService {
 
   login(correo: string, contrasenna: string): Observable<any> {
     console.log(correo+"--"+contrasenna);
-    return this.http.get(environment.url + '/checkLogin/' + correo + '/' + contrasenna).pipe(
+    return this.http.get(environment.url + '/login/' + correo + '/' + contrasenna).pipe(
       map(this.extractData),
       catchError(this.handleError<any>('login'))
     );
