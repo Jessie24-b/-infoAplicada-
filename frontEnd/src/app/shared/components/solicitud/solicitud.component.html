@@ -1,73 +1,41 @@
 <app-nav></app-nav>
-<div class="container">
-    <div class="card">
-      <div class="card-header">
-        Registrar Proyecto
-      </div>
-      <div class="card-body">
-
-        <form [formGroup]="recuest" (ngSubmit)="createRecuest()" class="formulario" #formDir="ngForm">
-
-          <div>
-            <div>
-              <label class="form-label"> Usuario Responsable: </label>
-              <select class="form-select form-control" formControlName="usuarioResponsable">
-                <option *ngFor="let e of employees" [value]=e.idFuncionario>{{e.nombre}} {{e.apellidos}}</option>
-              </select>
-            </div>
-            <span class="text-danger" *ngIf="recuest.hasError('required', 'usuarioResponsable') && formDir.submitted">
-              El usuario responsable es requerido.
-            </span>
-          </div>
-
-          <div>
-            <div>
-              <label class="form-label"> Usuario Final: </label>
-              <select class="form-select form-control" formControlName="usuarioFinal">
-                <option *ngFor="let e of employees" [value]=e.idFuncionario selected>{{e.nombre}} {{e.apellidos}}</option>
-              </select>
-            </div>
-            <span class="text-danger" *ngIf="recuest.hasError('required', 'usuarioFinal') && formDir.submitted">
-              El usuario responsable es requerido.
-            </span>
-          </div>
-
-          <div>
-            <div class="mb-3">
-              <label class="form-label"> Fecha inicio: </label>
-              <input type="date" class="form-control" formControlName="fechaInicio" placeholder="Fecha Inicio">
-            </div>
-            <span class="text-danger" *ngIf="recuest.hasError('required', 'fechaInicio') && formDir.submitted">
-              La fecha de inicio es requerida.
-            </span>
-          </div>
-
-          <div>
-            <div class="mb-3">
-              <label class="form-label"> Fecha fin: </label>
-              <input type="date" class="form-control" formControlName="fechaFin" placeholder="Fecha Fin">
-            </div>
-            <span class="text-danger" *ngIf="recuest.hasError('required', 'fechaFin') && formDir.submitted">
-              La fecha de fin es requerida.
-            </span>
-          </div>
-            <div>
-              <div class="mb-3 acta">
-                <label for="" class="form-label"> Documento Acta Constitutiva: </label>
-                <textarea class="form-control" formControlName="acta" rows="3"></textarea>
-              </div>
-              <span class="text-danger" *ngIf="recuest.hasError('required', 'fechaFin') && formDir.submitted">
-                La fecha de fin es requerida.
-              </span>
-            </div>
-
-          <div class="mb-3 row">
-            <div class="offset-sm-2 col-sm-10">
-              <button type="submit" class="btn btn-primary">Generar Proyecto</button>
-            </div>
-          </div>
-
-        </form>
-      </div>
+<div class="proyects-main">
+    <div class="proyect-title">
+        <a  class="btn btn-dark bR" href="/addRequest" role="button">
+            <fa-icon [icon]="faBookMedical"></fa-icon></a>
+        <span>
+            Proyectos
+        </span>
     </div>
-  </div>
+    <div class="container">
+        <div class="row">
+            <div *ngFor="let p of proyects" class="col-lg-3 col-md-6 col-sm-1">
+                <div>
+                    <span>{{p.responsableTI}}</span>
+                </div>
+                <div>
+                    <span>{{p.usuarioResponsable}}</span>
+                </div>
+                <div>
+                    <span>{{p.fechaInicio}}</span>
+                </div>
+                <div>
+                    <span>{{p.fechaFin}}</span>
+                </div>
+                <div>
+                    <span>{{p.acta}}</span>
+                </div>
+                <div>
+                    <span>
+                        <button  class="btn btn-warning">
+                            <fa-icon [icon]="faUserEdit"></fa-icon></button>| 
+                        <button  class="btn btn-danger">
+                            <fa-icon [icon]="faTrashAlt"></fa-icon></button>|
+                        <button  class="btn btn-primary"><fa-icon [icon]="faAddressCard"></fa-icon></button>|
+                        <button  class="btn btn-primary"><fa-icon [icon]="faFileMedical"></fa-icon></button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

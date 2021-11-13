@@ -1,0 +1,32 @@
+.formulario{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.card-header{
+    text-align: center;
+    font-weight: bold;
+    font-size: large;
+}
+.acta{
+    width: 200%;
+}
+.btn{
+    margin-left: -160px;
+    margin-top: 120px;
+}
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: rgb(245, 240, 240);
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 0.25rem;
+    width: 70%;
+    margin-left: 160px;
+    margin-top: 50px;
+}

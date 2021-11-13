@@ -41,8 +41,10 @@ export class LoginComponent implements OnInit {
     
     if (this.loginForm.valid) {
       this.rest.login(this.loginForm.value.email, this.loginForm.value.password).subscribe((result) => { 
-        alert(result);
         if(result != null){
+          console.log(result);
+          localStorage.setItem('token', result.idFuncionario);
+          localStorage.setItem('user',JSON.stringify(result));
           this.router.navigate(['/main']);
         } else {
           this.showMsgError= true;

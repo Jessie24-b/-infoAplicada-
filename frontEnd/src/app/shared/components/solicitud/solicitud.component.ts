@@ -3,6 +3,11 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { RestService } from '../../service/rest.service';
 import Swal from 'sweetalert2';
 import { ActivatedRoute, Router } from '@angular/router';
+import { faAddressCard } from '@fortawesome/free-solid-svg-icons';
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { faUserEdit } from '@fortawesome/free-solid-svg-icons';
+import { faFileMedical } from '@fortawesome/free-solid-svg-icons';
+import { faBookMedical } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -12,40 +17,26 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class SolicitudComponent implements OnInit {
 
-  recuest: FormGroup;
-  employees:any;
+ 
+  proyects:any;
+  faAddressCard = faAddressCard;
+  faTrashAlt = faTrashAlt;
+  faUserEdit = faUserEdit;
+  faFileMedical = faFileMedical;
+  faBookMedical = faBookMedical;
 
-  createFormGroup(){
-    
-    return new FormGroup({
-
-      usuarioResponsable: new FormControl('', [Validators.required]),
-      usuarioFinal: new FormControl('', [Validators.required]),
-      fechaInicio: new FormControl('', [Validators.required]),
-      fechaFin: new FormControl('', [Validators.required]),
-      acta: new FormControl('', [Validators.required]),
-    });
-
-  }
 
   constructor(private restService: RestService, public fb: FormBuilder,
     private route: ActivatedRoute, private router: Router) {
-      this.recuest= this.createFormGroup();
      }
 
   ngOnInit(): void {
-    this.getEmployees();
+    this.getProyects();
   }
 
-  getEmployees(){
-    this.restService.getEmployees().subscribe((res: any) => {
-      this.employees = res;
-      console.log(this.employees)
-    })
+  getProyects(){
+    
   }
 
-  createRecuest(){
-
-  }
 
 }

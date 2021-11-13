@@ -20,7 +20,7 @@ export class RestService {
 
   deleteEmployeByID(id:number){
 
-    return this.http.delete(environment.url+'/employees/delete'+id) 
+    return this.http.delete(environment.url+'/employees/delete/'+id) 
   }
 
   createEmploye(body:any){
