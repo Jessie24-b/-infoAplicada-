@@ -1,0 +1,30 @@
+.card-header{
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+
+}
+.container{
+    text-align: center;
+    margin-top:50px;
+}
+.bR{
+    width:70px;
+    float: left; 
+}
+.bR:hover{
+    color:black;
+    background-color: darkgray;
+}
+.btn{
+    font-size: 16px;
+    margin-right: 2px;
+}
+.card{
+    border:  1px solid rgba(0,0,0,.125);
+    margin:5px;
+}
+/* .proyImg{
+    width:200px;
+    height:250px;
+} */

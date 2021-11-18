@@ -13,6 +13,10 @@ import { environment } from 'src/environments/environment';
 export class RestService {
 
   constructor(private http: HttpClient) { }
+
+  getDepartamentos(){
+    return this.http.get(environment.url+'/employees/getDepartaments')
+  }
   
   getEmployees(){
     return this.http.get(environment.url+'/employees/get/')

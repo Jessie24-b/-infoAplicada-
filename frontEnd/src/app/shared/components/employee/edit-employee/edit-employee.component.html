@@ -88,9 +88,8 @@
                         <div>
                             <label class="form-label"> Seleccione un departamento: </label>
                             <select class="form-select form-control" formControlName="departamento">
-                                <option value="1" selected>Informática</option>
-                                <option value="2">Contaduria</option>
-                                <option value="3">Administración</option>
+                                <option value="1" *ngFor="let d of departamentos" [value]=d.idDepartamento>
+                                    {{d.descripcion}}</option>
                             </select>
                         </div>
                         <span class="text-danger"

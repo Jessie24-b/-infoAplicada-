@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { RestService } from '../../service/rest.service';
+import { RestService } from '../../../service/rest.service';
 import Swal from 'sweetalert2';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SolicitudServicaService} from '../../service/solicitud-service.service';
+import { SolicitudServicaService} from '../../../service/solicitud-service.service';
 
 @Component({
   selector: 'app-add-request',
@@ -14,6 +14,9 @@ export class AddRequestComponent implements OnInit {
 
   recuest: FormGroup;
   employees:any;
+  employeesTI:any;
+  public file:any= [];
+  
 
   createFormGroup(){
     
@@ -23,6 +26,7 @@ export class AddRequestComponent implements OnInit {
       usuarioFinal: new FormControl('', [Validators.required]),
       fechaInicio: new FormControl('', [Validators.required]),
       fechaFin: new FormControl('', [Validators.required]),
+      nombreProyecto: new FormControl('', [Validators.required]),
       acta: new FormControl('', [Validators.required]),
     });
 
@@ -42,8 +46,16 @@ export class AddRequestComponent implements OnInit {
     this.restService.getEmployees().subscribe((res: any) => {
       this.employees = res;
       console.log(this.employees)
+      this.employeesTI = this.employees.filter((employee: any) => employee.descripcion =='TI');
+      console.log(this.employeesTI)
     })
   }
+
+  onFileChange(e){
+    this.file= e.target.files;
+    console.log(this.file);
+ }
+
 
   createRecuest(){
     const proyect ={
@@ -52,6 +64,7 @@ export class AddRequestComponent implements OnInit {
       usuarioFinal:this.recuest.value.usuarioFinal,
       fechaInicio:this.recuest.value.fechaInicio,
       fechaFin:this.recuest.value.fechaFin,
+      nombreProyecto:this.recuest.value.nombreProyecto,
       acta:this.recuest.value.acta,
     }
 

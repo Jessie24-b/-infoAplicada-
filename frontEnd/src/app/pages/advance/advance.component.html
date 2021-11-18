@@ -1,0 +1,38 @@
+<app-nav></app-nav>
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <a class="btn btn-dark bR" (click)="createAdvance()" role="button">
+                <fa-icon [icon]="faBookMedical"></fa-icon>
+            </a>
+            <span class="title">
+                Avances 
+            </span>
+        </div>
+        <div class="card-body">
+            <div *ngFor="let a of advance" class="col-lg-3 col-md-6 col-sm-1 card">
+                <div>
+                    <span>Documento: {{a.documento}}</span>
+                </div><p></p>
+                <div>
+                    <span>Trimestre: {{a.descripcion}}</span>
+                </div><p></p>
+
+                <div>
+                    <span>Proyecto: {{a.documentoActaConstitutiva}}</span>
+                </div><p></p>
+                <div>
+                    <span>
+                        <button class="btn btn-warning">
+                            <fa-icon [icon]="faUserEdit" (click)="editAdvance(a.idSolicitud)"></fa-icon>
+                        </button>
+                        <button class="btn btn-danger" (click)="deleteAdvance(a.idSolicitud)">
+                            <fa-icon [icon]="faTrashAlt"></fa-icon>
+                        </button>
+                    </span>
+                </div><p></p>
+            </div>
+
+        </div>
+    </div>
+</div>

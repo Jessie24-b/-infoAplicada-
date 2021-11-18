@@ -10,9 +10,9 @@
 
           <div>
             <div>
-              <label class="form-label"> Usuario Responsable: </label>
+              <label class="form-label"> Usuario Responsable TI: </label>
               <select class="form-select form-control" formControlName="usuarioResponsable">
-                <option *ngFor="let e of employees" [value]=e.idFuncionario>{{e.nombre}} {{e.apellidos}}</option>
+                <option *ngFor="let e of employeesTI" [value]=e.idFuncionario>{{e.nombre}} {{e.apellidos}}</option>
               </select>
             </div>
             <span class="text-danger" *ngIf="recuest.hasError('required', 'usuarioResponsable') && formDir.submitted">
@@ -53,12 +53,20 @@
           </div>
             <div>
               <div class="mb-3 acta">
-                <label for="" class="form-label"> Documento Acta Constitutiva: </label>
-                <textarea class="form-control" formControlName="acta" rows="3"></textarea>
+                <label for="" class="form-label"> Nombre proyecto: </label>
+                <input type="text" class="form-control" formControlName="nombreProyecto" placeholder="Nombre proyecto">
               </div>
-              <span class="text-danger" *ngIf="recuest.hasError('required', 'acta') && formDir.submitted">
-                El documento Acta Constitutiva es requerida.
+              <span class="text-danger" *ngIf="recuest.hasError('required', 'nombreProyecto') && formDir.submitted">
+                El nombre es requerido.
               </span>
+            </div>
+
+            <div>
+              <div class="mb-3 documento">
+                <label for="" class="form-label"> Documento Acta Constitutiva: </label>
+                <input type="file" class="form-control" formControlName="acta" rows="3"
+                (change)="onFileChange($event)" />
+              </div>
             </div>
 
           <div class="mb-3 row">

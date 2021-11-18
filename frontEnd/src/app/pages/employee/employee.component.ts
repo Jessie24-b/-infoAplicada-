@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { RestService } from 'src/app/shared/service/rest.service';
 import Swal from 'sweetalert2';
 import { MatDialog } from '@angular/material/dialog';
-import { EditEmployeeComponent } from 'src/app/shared/components/edit-employee/edit-employee.component';
+import { EditEmployeeComponent } from 'src/app/shared/components/employee/edit-employee/edit-employee.component';
 import { faAddressCard } from '@fortawesome/free-solid-svg-icons';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { faUserEdit } from '@fortawesome/free-solid-svg-icons';
@@ -78,7 +78,7 @@ export class EmployeeComponent implements OnInit {
 
   openEdit(id:number):void{
     const dialogRef = this.dialog.open(EditEmployeeComponent,{
-      height:'540px',
+      height:'450px',
       width:'900px',
       data:{
         idFuncionario:id

@@ -16,9 +16,9 @@ router.put('/update', updateEmployee)
 
 router.get('/getDepartaments', getDepartaments)
 
-router.post("/single", upload.single("image"),(req, res) =>{
-    console.log(req.file.filename);
-    res.send("subio la imagen correctamente");
+router.post("/single", upload.single("documento"),(req, res) =>{
+    console.log("Console   ", req.file);
+    res.sendStatus(204);
 });
 
 module.exports = router ;

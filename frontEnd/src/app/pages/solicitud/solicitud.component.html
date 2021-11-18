@@ -1,0 +1,57 @@
+<app-nav></app-nav>
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <a class="btn btn-dark bR" href="/addRequest" role="button">
+                <fa-icon [icon]="faBookMedical"></fa-icon>
+            </a>
+            <span class="title">
+                Proyectos
+            </span>
+        </div>
+        <div class="card-body">
+            <div *ngFor="let p of proyects" class="col-lg-3 col-md-6 col-sm-1 card">
+
+                <div>
+                    <span>Nombre Proyecto: {{p.documentoActaConstitutiva}}</span>
+                </div><p></p>
+
+                <div class="proyImg">
+                    <img src="./assets/proyect.jpg" width="100px"> 
+                 </div> 
+
+                <div>
+                    <span>Responsable TI:{{p.usuarioTI}}</span>
+                </div><p></p>
+                <div>
+                    <span>Responsable Usuario Final:{{p.usuarioFinal}}</span>
+                </div><p></p>
+
+                <div>
+                    <span>Fecha Inicio: {{p.fechaInicio}}</span>
+                </div><p></p>
+                <div>
+                    <span>Fecha Fin: {{p.fechaFin}}</span>
+                </div><p></p>
+              
+                <div>
+                    <span>
+                        <button class="btn btn-warning">
+                            <fa-icon [icon]="faUserEdit" (click)="editRequest(p.idSolicitud)"></fa-icon>
+                        </button>
+                        <button class="btn btn-danger" (click)="deleteProyect(p.idSolicitud)">
+                            <fa-icon [icon]="faTrashAlt"></fa-icon>
+                        </button>
+                        <a class="btn btn-success" (click)="advance(p.idSolicitud)" role="button">
+                            <fa-icon [icon]="faFileMedical"></fa-icon>
+                        </a>
+                        <a class="btn btn-primary" (click)="advance(p.idSolicitud)" role="button">
+                            <fa-icon [icon]="faFileContract"></fa-icon>
+                        </a>
+                    </span>
+                </div><p></p>
+            </div>
+
+        </div>
+    </div>
+</div>

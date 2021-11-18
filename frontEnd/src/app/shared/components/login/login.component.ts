@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RestService } from '../../service/rest.service';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faLock } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-login',
@@ -14,6 +16,8 @@ export class LoginComponent implements OnInit {
   errorMessage: any;
   showMsgError: boolean = false;
   showMsgRegistration: boolean = false;
+  faEnvelope=faEnvelope;
+  faLock=faLock;
 
   constructor(public rest:RestService, private fb: FormBuilder, private route: ActivatedRoute,
     private router: Router) {}

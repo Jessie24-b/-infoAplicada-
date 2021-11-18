@@ -1,23 +1,104 @@
+.login-design{
+  display: grid;
+  grid-template-columns: repeat(2,50%);
+  height: 100vh;
+}
 
-.main-div{
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+.waves{
+  background-image: url(src\app\imagenes\wave.png);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+}
+.login{
+  display: flex;
+  justify-content: center;
+  align-items:center;
+}
+.login-data{
+  text-align:center;
+   width:70%;
+}
 
-  .example-card {
-    background: #b3b4b6;
-    width: 500px;
-    text-align: center;
-  }
+.login-data h1{
+  font-weight: 200;
+}
 
-  .margin {
-    width: 300px;
-    margin-left: 100px;
-  }
-  body{
-    background: url(src\app\imagenes\edificios.jpg);
-  }
+.input-group{
+  position:relative;
+  width: 60%;
+  margin: 0 auto;
+  margin-bottom: 1.5rem;
+  display:grid;
+}
 
+.input-fill input{
+    border:none;
+    border-bottom: 3px solid #848f9A;
+    width:100%;
+    font-size: 1.5rem;
+    padding-left: 3rem;
+    line-height:147.6%;
+    padding-top: 2rem;
+}
+
+.input-fill input:focus{
+  outline:none;
+  border-color:#6c1aef;
+}
+
+.input-fill input:hover{
+  background-color: #e9ecef;
+}
+
+ .input-fill input:focus +.input-label{
+  top: 0;
+  margin-bottom: 2rem;
+  color:#6c1aef;
+} 
+
+
+.input-fill input:focus ~ fa-icon{
+  color:#6c1aef;
+}
+
+.input-fill .input-label{
+  position:absolute;
+  top:0px;
+  left:28px;
+  line-height:147.6%;
+  color: #848f9A;
+  transition:top .2s;
+  font-weight: 700;
+}
+
+
+.input-fill fa-icon{
+  position:absolute;
+  top:18px;
+  left:0;
+  color:#848f9A;
+  font-size:1.5rem;
+}
+
+.btn-login{
+  border-radius: 3rem;
+  width: 45%;
+  border: 1px solid #6c1aef;
+  line-height: 1.6rem;
+  font-size: 1.3rem;
+  background-color:#6c1aef;
+  color:#fff;
+  padding:0.5rem;
+  transition: .3s ease-in-out all;
+  font-weight: 500;
+}
+
+.btn-login:hover{
+  cursor: pointer;
+  background-color:#fff;
+  color:#6c1aef;
+}
 

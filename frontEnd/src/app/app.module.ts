@@ -20,13 +20,15 @@ import { MainComponent } from './shared/components/main/main.component';
 import { MatCardModule } from '@angular/material/card';
 import { EmployeeComponent } from './pages/employee/employee.component';
 import { NavComponent } from './shared/components/nav/nav.component';
-import { AddEmployeComponent } from './shared/components/add-employe/add-employe.component';
-import { EditEmployeeComponent } from './shared/components/edit-employee/edit-employee.component';
+import { AddEmployeComponent } from './shared/components/employee/add-employe/add-employe.component';
+import { EditEmployeeComponent } from './shared/components/employee/edit-employee/edit-employee.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { SolicitudComponent } from './shared/components/solicitud/solicitud.component';
-import { AddRequestComponent } from './shared/components/add-request/add-request.component';
-import { AddAdvanceComponent } from './shared/components/add-advance/add-advance.component';
-import { AdvanceComponent } from './shared/components/advance/advance.component';
+import { SolicitudComponent } from './pages/solicitud/solicitud.component';
+import { AddRequestComponent } from './shared/components/request/add-request/add-request.component';
+import { AddAdvanceComponent } from './shared/components/avance/add-advance/add-advance.component';
+import { AdvanceComponent } from './pages/advance/advance.component';
+import { EditRequestComponent } from './shared/components/request/edit-request/edit-request.component';
+import { EditAdvanceComponent } from './shared/components/avance/edit-advance/edit-advance.component';
 
 
 
@@ -61,7 +63,9 @@ const appRoutes: Routes = [
     SolicitudComponent,
     AddRequestComponent,
     AddAdvanceComponent,
-    AdvanceComponent
+    AdvanceComponent,
+    EditRequestComponent,
+    EditAdvanceComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

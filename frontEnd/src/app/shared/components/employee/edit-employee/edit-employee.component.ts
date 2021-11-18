@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { RestService } from '../../service/rest.service';
+import { RestService } from '../../../service/rest.service';
 import Swal from 'sweetalert2';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -40,7 +40,7 @@ export class EditEmployeeComponent implements OnInit {
   }
   
   employee:any;
-  
+  departamentos:any;
   idMessage:any;
 
   constructor( public dialog:MatDialogRef<EditEmployeeComponent>, 
@@ -66,7 +66,13 @@ export class EditEmployeeComponent implements OnInit {
 
 
   ngOnInit(): void {
-   
+    this.getDepartamentos();
+  }
+
+  getDepartamentos(){
+    this.restService.getDepartamentos().subscribe((res: any) => {
+      this.departamentos = res;
+    })
   }
   
    fillFormEdit(id){

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { RestService } from '../../service/rest.service';
+import { RestService } from '../../../service/rest.service';
 import Swal from 'sweetalert2';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -40,6 +40,7 @@ export class AddEmployeComponent implements OnInit {
   }
 
   newEmployee: FormGroup;
+  departamentos:any;
 
   constructor(private restService: RestService, public fb: FormBuilder,
      private route: ActivatedRoute, private router: Router) {
@@ -47,6 +48,14 @@ export class AddEmployeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getDepartamentos();
+  }
+
+  getDepartamentos(){
+    this.restService.getDepartamentos().subscribe((res: any) => {
+      this.departamentos = res;
+      console.log(this.departamentos);
+    })
   }
 
   createEmployee() {
