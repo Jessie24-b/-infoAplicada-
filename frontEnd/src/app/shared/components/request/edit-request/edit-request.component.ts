@@ -17,6 +17,7 @@ export class EditRequestComponent implements OnInit {
   employees:any;
   proyect:any
   idMessage:any;
+  employeesTI:any;
   public file:any= [];
 
   createFormGroup(){
@@ -49,7 +50,7 @@ export class EditRequestComponent implements OnInit {
   getEmployees(){
     this.restService.getEmployees().subscribe((res: any) => {
       this.employees = res;
-      
+      this.employeesTI = this.employees.filter((employee: any) => employee.descripcion =='TI');
     })
   }
 
@@ -81,7 +82,7 @@ onFileChange(e){
       fechaInicio:this.editRequest.value.fechaInicio,
       fechaFin:this.editRequest.value.fechaFin,
       nombreProyecto:this.editRequest.value.nombreProyecto,
-    //  acta:this.editRequest.value.acta,
+      acta:'Editado',
     }
 
     if(this.editRequest.valid){

@@ -31,7 +31,7 @@ export class AddAdvanceComponent implements OnInit {
   }
 
   constructor( public fb: FormBuilder,private router: Router,
-    public dialog:MatDialogRef<AddAdvanceComponent>, private avance:AvancesServiceService,
+    public dialog:MatDialogRef<AddAdvanceComponent>, private avanceService:AvancesServiceService,
     @Inject(MAT_DIALOG_DATA) public message: string,private soliService:SolicitudServicaService ) { 
 
       this.addAdvance= this.createFormGroup();
@@ -59,31 +59,33 @@ export class AddAdvanceComponent implements OnInit {
 
   createAdvance() {
 
-    let formData= new FormData();
+   /*  let formData= new FormData();
     formData.append("documento",this.documento[0],this.documento[0].name);
      console.log(formData);
      this.avance.uploadFile(formData).subscribe((res)=>{
        console.log('Response:', res);
      })
-
-   /*  const advance ={
-      proyecto:this.addAdvance.value.proyecto,
-      trimestre:this.addAdvance.value.trimestre,
+ */
+     const advance ={
+      idTrimestre:this.addAdvance.value.trimestre,
+      documento:'soy un avance',
+      usuarioAplicativo: localStorage.getItem('token'),
+      idSolicitud:this.addAdvance.value.proyecto
     }
 
     if(this.addAdvance.valid){
-      if(this.advance.createAdvance(advance)){
-        Swal.fire({
+      if(this.avanceService.createAvance(advance)){
+         Swal.fire({
           position: 'center',
           icon: 'success',
           title: 'Registro éxitoso',
           showConfirmButton: false,
           timer: 1500
         })
-        window.location.href="/advance"
+        window.location.href="/advance" 
       }
 
-    } */
+    } 
 
   }
 

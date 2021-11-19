@@ -48,17 +48,20 @@ export class AdvanceComponent implements OnInit {
     if(sessionStorage.getItem('idSolicitud')==null){
       this.advanceService.getAvances().subscribe((res: any)=>{
         this.advance=res
+        console.log(this.advance);
       })
     }else{
       this.idSolicitud=Number(sessionStorage.getItem('idSolicitud'));
       sessionStorage.removeItem('idSolicitud');
       
       console.log(this.idSolicitud)
-      this.advanceService.getAvancesById(this.idSolicitud).subscribe((res: any)=>{
-          console.log("2"+this.idSolicitud)
+      this.advanceService.getAvancesByIdSolicitud(this.idSolicitud).subscribe((res: any)=>{
+          console.log("2 "+this.idSolicitud)
         this.advance=res
+        console.log(this.advance)
       })
     }
+   
   }
 
   createAdvance(){
@@ -82,7 +85,7 @@ export class AdvanceComponent implements OnInit {
   }
 
   openEdit(id:number):void{
-    const dialogRef = this.dialog.open(AddAdvanceComponent,{
+    const dialogRef = this.dialog.open(EditAdvanceComponent,{
       height:'350px',
       width:'750px',
       data:{
@@ -117,7 +120,7 @@ export class AdvanceComponent implements OnInit {
       }
       this.advanceService.deleteAvance(id).subscribe((res: any) => {
         console.log('eliminado exitosamente')
-        // this.router.navigate(['/employee'])
+         //this.router.navigate(['/advance'])
          window.location.href="/advance"
       })
     })

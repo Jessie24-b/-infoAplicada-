@@ -19,14 +19,14 @@ export const getRequest = async (req, res) => {
 
 export const addRequest = async  (req, res) => {
     console.log("entro");
-    const {usuarioAplicativo, usuarioResponsable, usuarioFinal, fechaInicio, fechaFin, acta} = req.body;
+    const {usuarioAplicativo, usuarioResponsable, usuarioFinal, fechaInicio, fechaFin, nombreProyecto, acta} = req.body;
     console.log(req.body)
 
     try {
         const pool = await getconnection();
 
         await pool.request().query( "exec [dbo].[sp_AddRequest] " + usuarioAplicativo+ "," + usuarioResponsable+","+usuarioFinal +",'"
-        + fechaInicio+"','"+ fechaFin+"','"+ acta+"'");
+        + fechaInicio+"','"+ fechaFin+"','"+ nombreProyecto +"','"+ acta+"'");
          res.sendStatus(204);
       //   pool.close();
     } catch (error) {
@@ -76,7 +76,8 @@ export const updateRequest = async  (req, res) => {
         const pool = await getconnection();
 
         await pool.request().query( "exec [dbo].[sp_updateRequest] " + idSolicitud + "," +
-         usuarioResponsable+","+usuarioFinal +",'" + fechaInicio+"','"+ fechaFin+"','"+ acta+"'");
+         usuarioResponsable+","+usuarioFinal +",'" + fechaInicio+"','"+ fechaFin+"','"+ 
+         nombreProyecto +"','"+ acta+"'");
          res.sendStatus(204);
          pool.close();
     } catch (error) {

@@ -1,1 +1,60 @@
-<p>edit-advance works!</p>
+<div mat-dialog-content>
+    <div mat-dialog-actions>
+  
+      <div class="card">
+        <div class="card-header">
+          Editar Advance
+        </div>
+        <div class="card-body">
+  
+          <form [formGroup]="editAdvance" (ngSubmit)="updateAdvance()" class="formulario" #formDir="ngForm" enctype="multipart/form-data">
+  
+            <div>
+              <div>
+                <label class="form-label"> Proyecto: </label>
+                <select class="form-select form-control" formControlName="proyecto">
+                  <option *ngFor="let p of proyects" [value]=p.idSolicitud selected>{{p.nombreProyecto}}</option>
+                </select>
+              </div>
+              <span class="text-danger"
+                *ngIf="editAdvance.hasError('required', 'proyecto') && formDir.submitted">
+                El usuario responsable es requerido.
+              </span>
+            </div>
+  
+            <div>
+              <div>
+                <label class="form-label"> Trimestre: </label>
+                <select class="form-select form-control" formControlName="trimestre">
+                  <option value=1 selected>Ene-Feb-Mar </option>
+                  <option value=2 selected>Abr-May-Jun </option>
+                  <option value=3 selected>Jul-Ago-Sep </option>
+                  <option value=4 selected>Oct-Nov-Dic </option>
+                </select>
+              </div>
+              <span class="text-danger" *ngIf="editAdvance.hasError('required', 'trimestre') && formDir.submitted">
+                El trimestre es requerido.
+              </span>
+            </div>
+  
+            <div>
+              <div class="mb-3 documento">
+                <label for="" class="form-label"> Documento: </label>
+                <input type="file" class="form-control" formControlName="documento"
+                (change)="onFileChange($event)" />
+              </div>
+            </div>
+  
+            <div class="mb-3 row">
+              <div class="offset-sm-2 col-sm-10">
+                <button type="submit" class="btn btn-primary">Editar Avance</button>
+              </div>
+            </div>
+  
+          </form>
+        </div>
+      </div>
+  
+    </div>
+  </div>
+

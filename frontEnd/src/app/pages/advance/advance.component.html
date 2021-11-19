@@ -12,21 +12,33 @@
         <div class="card-body">
             <div *ngFor="let a of advance" class="col-lg-3 col-md-6 col-sm-1 card">
                 <div>
-                    <span>Documento: {{a.documento}}</span>
+                    <span>Avance del Proyecto: {{a.nombreProyecto}}</span>
                 </div><p></p>
+
+                <div class="proyImg">
+                    <img src="./assets/avance.jpg" width="100px"> 
+                 </div> 
                 <div>
                     <span>Trimestre: {{a.descripcion}}</span>
                 </div><p></p>
+                <div>
+                    <span>Fecha Creación: {{a.fecha}}</span>
+                </div><p></p>
+                <div>
+                    <span>Usuario Aplicativo: {{a.nombre}} {{a.apellidos}}</span>
+                </div><p></p>
 
                 <div>
-                    <span>Proyecto: {{a.documentoActaConstitutiva}}</span>
+                    <span>Documento: {{a.documento}}</span>
                 </div><p></p>
+
+              
                 <div>
                     <span>
                         <button class="btn btn-warning">
-                            <fa-icon [icon]="faUserEdit" (click)="editAdvance(a.idSolicitud)"></fa-icon>
+                            <fa-icon [icon]="faUserEdit" (click)="editAdvance(a.idAvance)"></fa-icon>
                         </button>
-                        <button class="btn btn-danger" (click)="deleteAdvance(a.idSolicitud)">
+                        <button class="btn btn-danger" (click)="deleteAdvance(a.idAvance)">
                             <fa-icon [icon]="faTrashAlt"></fa-icon>
                         </button>
                     </span>

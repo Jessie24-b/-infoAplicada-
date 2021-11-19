@@ -42,6 +42,7 @@ export class SolicitudComponent implements OnInit {
   getProyects(){
     this.soliService.getSolicitudes().subscribe((res: any) => {
       this.proyects = res;
+      console.log(this.proyects);
     })
     
   }

@@ -1,3 +1,9 @@
 body{
-    background:url(src\app\imagenes\c.jpg);
+    background: rgb(174,29,240);
+    background: linear-gradient(90deg, rgba(174,29,240,0.7679446778711485) 0%, rgba(116,9,121,0.639093137254902) 35%, rgba(210,99,159,0.5410539215686274) 100%);
+}
+.imgen{
+    background-position: center;
+    justify-content:center;
+    align-items: center;
 }

@@ -65,7 +65,7 @@ export class AddRequestComponent implements OnInit {
       fechaInicio:this.recuest.value.fechaInicio,
       fechaFin:this.recuest.value.fechaFin,
       nombreProyecto:this.recuest.value.nombreProyecto,
-      acta:this.recuest.value.acta,
+      acta:'Proyecto ',
     }
 
     if(this.recuest.valid){
