@@ -1,0 +1,55 @@
+<app-nav></app-nav>
+
+<div class="container">
+    <div class="card">
+        <span>
+            <button type="button" class="btn btn-secondary" (click)="singlePage('soli')">
+                Solicitud <fa-icon [icon]="faCalendarDay"></fa-icon>
+            </button>
+
+            <button type="button" class="btn btn-secondary" (click)="singlePage('tran')">
+                Transacciones <fa-icon [icon]="faCalendarAlt"></fa-icon>
+                </button>
+
+            <button type="button" class="btn btn-secondary" (click)="singlePage('proy')">
+                Proyectos <fa-icon [icon]="faChartBar"></fa-icon>
+                </button>
+
+            <button type="button" class="btn btn-secondary" (click)="singlePage('term')">
+                terminados/pendientes <fa-icon [icon]="faHistory"></fa-icon>
+            </button>
+
+            <button type="button" class="btn btn-secondary" (click)="singlePage('trime')">
+                trimestral proyecto <fa-icon  [icon]="faCalendarWeek"></fa-icon>
+                </button>
+
+            <button type="button" class="btn btn-secondary" (click)="singlePage('camb')">
+                Proyectos cambios <fa-icon [icon]="faExchangeAlt"></fa-icon>
+            </button>
+
+            <button type="button" class="btn btn-secondary" (click)="singlePage('resu')">
+                Resumen <fa-icon [icon]="faFileInvoice"></fa-icon>
+            </button>
+        </span>
+    </div>
+
+    <div *ngIf="change == 'soli'">
+        <app-solicitud-transaccion></app-solicitud-transaccion> 
+    </div>
+    <div *ngIf="change == 'tran'">
+        <app-solicitud-transaccion></app-solicitud-transaccion> 
+    </div>
+    <div *ngIf="change == 'proy'">
+        <app-grafica-avances></app-grafica-avances>
+    </div>
+    <div *ngIf="change == 'term'">
+        <app-grafica-proye></app-grafica-proye>
+    </div>
+    
+    <div *ngIf="change == 'camb'">
+        <app-cambios></app-cambios>
+    </div>
+    
+    
+
+</div>

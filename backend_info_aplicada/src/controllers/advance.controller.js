@@ -16,6 +16,22 @@ export const getAdvances = async (req, res) => {
 
 };
 
+
+export const getReportAdvance = async (req, res) => {
+    
+    try {
+        const pool = await getconnection();
+        const result = await pool.request().query('exec [dbo].[sp_getReportAdvance]')
+        res.json(result.recordset)
+        pool.close();
+    } catch (error) {
+        res.status(500);
+        res.send(error.message);
+       
+    }
+
+};
+
 export const addAdvance = async  (req, res) => {
     console.log("entro");
     const {idTrimestre, documento, usuarioAplicativo, idSolicitud} = req.body;

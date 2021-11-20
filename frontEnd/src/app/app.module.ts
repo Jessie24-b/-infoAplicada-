@@ -1,4 +1,3 @@
-//Generales
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -9,14 +8,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog'
 import { MatButtonModule }from '@angular/material/button'
-
-
-
-//Componentes
 import { LoginComponent } from './shared/components/login/login.component';
 import { MainComponent } from './shared/components/main/main.component';
-
-//Angular Material
 import { MatCardModule } from '@angular/material/card';
 import { EmployeeComponent } from './pages/employee/employee.component';
 import { NavComponent } from './shared/components/nav/nav.component';
@@ -29,6 +22,13 @@ import { AddAdvanceComponent } from './shared/components/avance/add-advance/add-
 import { AdvanceComponent } from './pages/advance/advance.component';
 import { EditRequestComponent } from './shared/components/request/edit-request/edit-request.component';
 import { EditAdvanceComponent } from './shared/components/avance/edit-advance/edit-advance.component';
+import { ReportesComponent } from './pages/reportes/reportes.component';
+import { SolicitudTransaccionComponent } from './shared/components/reportes/solicitud-transaccion/solicitud-transaccion.component';
+import { GraficaAvancesComponent } from './shared/components/reportes/grafica-avances/grafica-avances.component';
+import { ColorPickerModule } from 'ngx-color-picker';
+import { ChartsModule } from 'ng2-charts';
+import { CambiosComponent } from './shared/components/reportes/cambios/cambios.component';
+import { GraficaProyeComponent } from './shared/components/reportes/grafica-proye/grafica-proye.component';
 
 
 
@@ -65,7 +65,13 @@ const appRoutes: Routes = [
     AddAdvanceComponent,
     AdvanceComponent,
     EditRequestComponent,
-    EditAdvanceComponent
+    EditAdvanceComponent,
+    ReportesComponent,
+    SolicitudTransaccionComponent,
+    GraficaAvancesComponent,
+    CambiosComponent,
+    GraficaProyeComponent
+
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -79,6 +85,8 @@ const appRoutes: Routes = [
     MatDialogModule,
     MatButtonModule,
     FontAwesomeModule,
+    ColorPickerModule,
+    ChartsModule
   ],
   entryComponents:[EditEmployeeComponent],
   providers: [],

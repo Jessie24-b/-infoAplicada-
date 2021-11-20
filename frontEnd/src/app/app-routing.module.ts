@@ -9,6 +9,7 @@ import { LoginComponent } from './shared/components/login/login.component';
 import { MainComponent } from './shared/components/main/main.component';
 import { SolicitudComponent } from './pages/solicitud/solicitud.component';
 import { VigilanteGuard } from './vigilante.guard';
+import { ReportesComponent } from './pages/reportes/reportes.component';
 
 const routes: Routes = [
   {
@@ -47,6 +48,11 @@ const routes: Routes = [
   {
     path:'advance',
     component: AdvanceComponent,
+    canActivate:[VigilanteGuard]
+  },
+  {
+    path:'reportes',
+    component: ReportesComponent,
     canActivate:[VigilanteGuard]
   }
 

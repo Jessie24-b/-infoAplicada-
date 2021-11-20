@@ -1,8 +1,10 @@
 import { Router } from "express";
-import { addAdvance, deleteAdvance, getAdvanceById, getAdvanceByIdRequest, getAdvances, updateAdvance } from '../controllers/advance.controller'
+import { addAdvance, deleteAdvance, getAdvanceById, getAdvanceByIdRequest, getAdvances, updateAdvance, getReportAdvance } from '../controllers/advance.controller'
 const router = Router();
 
 router.get('/get',getAdvances)
+
+router.get('/getAdvance', getReportAdvance)
 
 router.post('/add', addAdvance)
 

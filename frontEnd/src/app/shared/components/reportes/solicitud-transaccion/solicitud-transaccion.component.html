@@ -1,0 +1,144 @@
+<p></p>
+<div class="card">
+    <div class="card-header">
+        <span *ngIf="value == 1">
+
+            <form [formGroup]="fechas" (ngSubmit)="fillTable()" class="formulario" #formDir="ngForm">
+                <div class="row">
+                    <div class="mb-3 col-6">
+                        <label class="form-label">Fecha Inicio: </label>
+                        <input type="date" class="form-control" formControlName="fechaInicio">
+                    </div>
+
+                    <div class="mb-3  col-6">
+                        <label class="form-label">Fecha Fin: </label>
+                        <input type="date" class="form-control" formControlName="fechaFin">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <div class="offset-sm-2 col-sm-10">
+                        <button type="submit" class="btn btn-primary">Buscar</button>
+                    </div>
+                </div>
+            </form>
+
+        </span>
+
+        <span *ngIf="value == 2">
+            <form [formGroup]="meses" (ngSubmit)="fillTableTran()" class="formulario" #formDir="ngForm">
+                <div class="row">
+                    <div class="mb-3 col-6">
+                        <label class="form-label">Mes Inicio: </label>
+                        <select class="form-select form-control" formControlName="mesInicio">
+                            <option value="1">Ene</option>
+                            <option value="2">Feb</option>
+                            <option value="3">Mar</option>
+                            <option value="4">Abr</option>
+                            <option value="5">May</option>
+                            <option value="6">Jun</option>
+                            <option value="7">Jul</option>
+                            <option value="8">Ago</option>
+                            <option value="9">Set</option>
+                            <option value="10">Oct</option>
+                            <option value="11">Nov</option>
+                            <option value="12">Dic</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3  col-6">
+                        <label class="form-label">Mes Fin: </label>
+                        <select class="form-select form-control" formControlName="mesFin">
+                            <option value="1">Ene</option>
+                            <option value="2">Feb</option>
+                            <option value="3">Mar</option>
+                            <option value="4">Abr</option>
+                            <option value="5">May</option>
+                            <option value="6">Jun</option>
+                            <option value="7">Jul</option>
+                            <option value="8">Ago</option>
+                            <option value="9">Set</option>
+                            <option value="10">Oct</option>
+                            <option value="11">Nov</option>
+                            <option value="12">Dic</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <div class="offset-sm-2 col-sm-10">
+                        <button type="submit" class="btn btn-primary">Filtrar</button>
+                    </div>
+                </div>
+            </form>
+        </span>
+
+    </div>
+    <div class="card-body">
+        <div *ngIf="value2 == 1">
+            <div *ngIf=" solicitud?.length > 0; else mensaje ">
+                <table class="table table-light table-striped table-hove">
+                    <thead>
+                        <tr>
+                            <th>Nombre Proyecto</th>
+                            <th>Fecha</th>
+                            <th>Usuario Aplicativo</th>
+                            <th>Responsable TI</th>
+                            <th>Usuario Final</th>
+                            <th>Fecha Inicio</th>
+                            <th>Fecha Fin</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr *ngFor="let s of solicitud">
+                            <td>{{s.nombreProyecto}}</td>
+                            <td>{{s.fecha}}</td>
+                            <td>{{s.nUsuarioAplicativo}} {{s.aUsuarioAplicativo}}</td>
+                            <td>{{s.nUsuarioTI}} {{s.aUsuarioTI}}</td>
+                            <td>{{s.nUsuarioFinal}} {{s.aUsuarioFinal}}</td>
+                            <td>{{s.fechaInicio}}</td>
+                            <td>{{s.fechaFin}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div>
+                <ng-template #mensaje>
+                    <h1>No hay Solicitudes entre ese rango de fechas</h1>
+                </ng-template>
+            </div>
+
+        </div>
+
+        <div *ngIf="value2 == 2">
+            <div *ngIf="transaccion?.length > 0; else mensaje2 ">
+                <table class="table table-light table-striped table-hove">
+                    <thead>
+                        <tr>
+                            <th>Descripción</th>
+                            <th>Usuario Aplicativo</th>
+                            <th>Fecha</th>
+                            <th>Nombre Proyecto</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr *ngFor="let t of transaccion">
+                            <td>{{t.descripcion}}</td>
+                            <td>{{t.nombre}} {{t.apellidos}}</td>
+                            <td>{{t.fecha}}</td>
+                            <td>{{t.nombreProyecto}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div>
+                <ng-template #mensaje2>
+                    <h1>No hay Transacciones entre ese rango de meses</h1>
+                </ng-template>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

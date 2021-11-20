@@ -18,8 +18,12 @@ export class AvancesServiceService {
     return this.http.get(environment.url+'/advance/get')
   }
 
+  getReportAdvance(){
+    return this.http.get(environment.url+'/advance/getAdvance')
+  }
+
   getAvancesByIdSolicitud(id:number){ //obtener todos los avances de un proyecto
-      console.log('service');
+
     return this.http.get(environment.url+'/advance/getByIdRequest/'+id)
   }
 

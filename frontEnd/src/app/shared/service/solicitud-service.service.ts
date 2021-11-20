@@ -17,6 +17,14 @@ export class SolicitudServicaService {
     return this.http.get(environment.url+'/request/getById/'+id)
   }
 
+  getSolicitudByDate(fechaInicio, fechaFin){
+    return this.http.get(environment.url+'/request/getByDate/'+fechaInicio+'/'+fechaFin)
+  }
+
+  getTransacciones(mesInicio, mesFin){
+    return this.http.get(environment.url+'/request/getTransacciones/'+mesInicio+'/'+mesFin)
+  }
+
   deleteSolicitud(id:number){
 
     return this.http.delete(environment.url+'/request/delete/'+id) 
